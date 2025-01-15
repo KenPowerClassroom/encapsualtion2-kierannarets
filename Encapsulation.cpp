@@ -52,8 +52,8 @@ public:
         return currentTemperature;
     }
 
-    void checkTemperature(HeatingSystem& heating) {
-        if (getCurrentTemperature() < 20.0) {
+    void checkTemperature(HeatingSystem& heating, int temp) {
+        if (getCurrentTemperature() < temp) {
             heating.turnOn();
         }
         else {
@@ -161,8 +161,9 @@ int main() {
 
     Thermostat thermostat(18.5);
     HeatingSystem heating;
+    int defaultTemperature = 20;
 
-    thermostat.checkTemperature(heating);
+    thermostat.checkTemperature(heating, defaultTemperature);
     
     //////////////////////////////////////////////////////////////////
     // Exercise 3
